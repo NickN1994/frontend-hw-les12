@@ -8,8 +8,9 @@ function Fruitbox (props) {
                 <button
                     type='button'
                     onClick={() => props.setCounter(props.counter - 1)}
+                    disabled={props.counter === 0}
                 >-</button>
-                <p>{props.counter <= 0 ? 0 : props.counter}</p>
+                <p>{props.counter}</p>
                 <button
                     type='button'
                     onClick={() => props.setCounter(props.counter + 1)}

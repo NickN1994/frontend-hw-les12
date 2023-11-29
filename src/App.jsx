@@ -12,16 +12,17 @@ function App() {
     const [banenenCounter, banenenSetCounter] = React.useState(0);
     const [appelCounter, appelSetCounter] = React.useState(0);
     const [kiwiCounter, kiwiSetCounter] = React.useState(0);
+    const [textField, setTextField] = React.useState("")
 
 
     return (
         <>
             <Fruitbox
-            image={aardbei}
-            alt={"fruit-afbeelding"}
-            title="Aardbeien"
-            counter={aardbeiCounter}
-            setCounter={aardbeiSetCounter}
+                image={aardbei}
+                alt={"fruit-afbeelding"}
+                title="Aardbeien"
+                counter={aardbeiCounter}
+                setCounter={aardbeiSetCounter}
             />
 
             <Fruitbox
@@ -49,10 +50,60 @@ function App() {
             />
 
             <button
-            type='button'
-            onClick={() => aardbeiSetCounter(aardbeiCounter - aardbeiCounter) || banenenSetCounter(banenenCounter - banenenCounter) || appelSetCounter(appelCounter - appelCounter) || kiwiSetCounter(kiwiCounter - kiwiCounter)}
+                type='button'
+                onClick={() => aardbeiSetCounter(aardbeiCounter - aardbeiCounter) || banenenSetCounter(banenenCounter - banenenCounter) || appelSetCounter(appelCounter - appelCounter) || kiwiSetCounter(kiwiCounter - kiwiCounter)}
             >Reset
             </button>
+
+            <div className="box-form">
+                <form action="">
+                    <fieldset>
+                        <p>Voornaam:</p>
+                        <input type="text"
+                               id="name"
+                               name="name"
+                               value={textField}
+                               onChange={(e) => setTextField(e.target.value)}
+                        />
+                        <p>Achternaam:</p>
+                        <input type="text"
+                               id="last-name"
+                               name="last-name"
+                               value={textField}
+                               onChange={(e) => setTextField(e.target.value)}
+                        />
+                        <p>Leeftijd:</p>
+                        <input type="number"
+                               id="age"
+                               name="age"
+                               placeholder="0"
+                               value={textField}
+                               onChange={(e) => setTextField(e.target.value)}
+                        />
+                        <p>Adres</p>
+                        <input type="text"
+                               id="adress"
+                               name="adress"
+                               value={textField}
+                               onChange={(e) => setTextField(e.target.value)}
+                        />
+                        <p>Postcode</p>
+                        <input type="text"
+                               id="postcode"
+                               name="postcode"
+                               value={textField}
+                               onChange={(e) => setTextField(e.target.value)}
+                        />
+                        <p>Bezorgfrequentie:</p>
+                        <input type="text"
+                               id="age"
+                               name="age"
+                               value={textField}
+                               onChange={(e) => setTextField(e.target.value)}
+                        />
+                    </fieldset>
+                </form>
+            </div>
 
 
         </>
