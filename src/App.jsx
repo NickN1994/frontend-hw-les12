@@ -24,12 +24,9 @@ function App() {
     const [adress, setAdress] = React.useState("");
     const [postcode, setPostcode] = React.useState("");
     const [comment, setComment] = React.useState("");
-    const [radioButton, setRadioButton] = React.useState('overdag');
-    const isRadioSelected = (value : string) : boolean => true;
-
 
     return (
-        <>
+        <body className="outer-box">
             <Fruitbox
                 image={aardbei}
                 alt={"fruit-afbeelding"}
@@ -130,8 +127,8 @@ function App() {
                         </Dropdown>
 
                         <Dropdown
-                        name={"Bezorgdag"}
-                        id={"bezorgdag"}
+                            name={"Bezorgdag"}
+                            id={"bezorgdag"}
                         >
                             <option value="Maandag">Maandag</option>
                             <option value="Dinsdag">Dinsdag</option>
@@ -143,11 +140,10 @@ function App() {
                         <div>
                             <p>Bezorgmoment:</p>
                             <input type="radio" id="overdag" name="overdag" value={"Overdag"} checked
-                                   onChange={(e) => setRadioButton(e.target.value)}/>
+                            />
                             <label htmlFor="Overdag">Overdag</label>
 
-                            <input type="radio" id="Avond" name="avond" value={"'avond"} checked={false}
-                                   onChange={(e) => setRadioButton(e.target.value)}/>
+                            <input type="radio" id="Avond" name="avond" value={"'avond"}/>
                             <label htmlFor="Avond">Avond</label>
                         </div>
 
@@ -174,7 +170,7 @@ function App() {
             </div>
 
 
-        </>
+        </body>
     )
 }
 
