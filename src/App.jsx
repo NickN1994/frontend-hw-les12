@@ -6,8 +6,10 @@ import appels from "./assets/appels.jpg"
 import bananen from "./assets/bananen.jpg"
 import aardbei from "./assets/aardbei.png"
 import Button from "./components/Button.jsx";
-import button from "./components/Button.jsx";
+
 import FormField from "./components/FormField.jsx";
+import Dropdown from "./components/Dropdown.jsx";
+
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
     const [adress, setAdress] = React.useState("");
     const [postcode, setPostcode] = React.useState("");
     const [comment, setComment] = React.useState("");
+    const [radioButton, setRadioButton] = React.useState('overdag');
+    const isRadioSelected = (value : string) : boolean => true;
 
 
     return (
@@ -72,86 +76,78 @@ function App() {
                             title={"Voornaam"}
                             type={"text"}
                             id={"name"}
+                            name={"name"}
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                         />
 
-                        {/*<div>*/}
-                        {/*    <p>Voornaam:</p>*/}
-                        {/*    <input type="text"*/}
-                        {/*           id="name"*/}
-                        {/*           name="name"*/}
-                        {/*           value={firstName}*/}
-                        {/*           onChange={(e) => setFirstName(e.target.value)}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
 
-                        <div>
-                            <p>Achternaam:</p>
-                            <input type="text"
-                                   id="last-name"
-                                   name="last-name"
-                                   value={lastName}
-                                   onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </div>
+                        <FormField
+                            title={"Achternaam"}
+                            type={"text"}
+                            id={"last-name"}
+                            name={"last-name"}
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
 
-                        <div>
-                            <p>Leeftijd:</p>
-                            <input type="number"
-                                   id="age"
-                                   name="age"
-                                   placeholder="0"
-                                   value={age}
-                                   onChange={(e) => setAge(e.target.value)}
-                            />
-                        </div>
 
-                        <div>
-                            <p>Adres:</p>
-                            <input type="text"
-                                   id="adress"
-                                   name="adress"
-                                   value={adress}
-                                   onChange={(e) => setAdress(e.target.value)}
-                            />
-                        </div>
+                        <FormField
+                            title={"Leeftijd"}
+                            type={"number"}
+                            id={"age"}
+                            value={age}
+                            onChange={(e) => setAge(e.target.value)}
+                        />
 
-                        <div>
-                            <p>Postcode</p>
-                            <input type="text"
-                                   id="postcode"
-                                   name="postcode"
-                                   value={postcode}
-                                   onChange={(e) => setPostcode(e.target.value)}
-                            />
-                        </div>
 
-                        <div>
-                            <p>Bezorgfrequentie:</p>
-                            <select name="bezorgfrequentie" id="bezorgfrequentie">
-                                <option value="Wekelijks">Wekelijks</option>
-                                <option value="om-de-2-weken">Om de 2 weken</option>
-                                <option value="maandelijks">Wekelijks</option>
-                            </select>
-                        </div>
+                        <FormField
+                            title={"Adres"}
+                            type={"text"}
+                            id={"adres"}
+                            name={"name"}
+                            value={adress}
+                            onChange={(e) => setAdress(e.target.value)}
+                        />
 
-                        <div>
-                            <p>Bezorgdag:</p>
-                            <select name="bezorgdag" id="bezorgfrequentie">
-                                <option value="Maandag">Maandag</option>
-                                <option value="Dinsdag">Dinsdag</option>
-                                <option value="Woensdag">Woensdag</option>
-                                <option value="Donderdag">Donderdag</option>
-                                <option value="Vrijdag">Vrijdag</option>
-                            </select>
-                        </div>
+
+                        <FormField
+                            title={"Postcode"}
+                            type={"text"}
+                            id={"postcode"}
+                            name={"postcode"}
+                            value={postcode}
+                            onChange={(e) => setPostcode(e.target.value)}
+                        />
+
+                        <Dropdown
+                            name={"Bezorgfrequentie"}
+                            id={"bezorgfrequentie"}
+                        >
+                            <option value="Wekelijks">Wekelijks</option>
+                            <option value="om-de-2-weken">Om de 2 weken</option>
+                            <option value="maandelijks">Maandelijks</option>
+                        </Dropdown>
+
+                        <Dropdown
+                        name={"Bezorgdag"}
+                        id={"bezorgdag"}
+                        >
+                            <option value="Maandag">Maandag</option>
+                            <option value="Dinsdag">Dinsdag</option>
+                            <option value="Woensdag">Woensdag</option>
+                            <option value="Donderdag">Donderdag</option>
+                            <option value="Vrijdag">Vrijdag</option>
+                        </Dropdown>
 
                         <div>
                             <p>Bezorgmoment:</p>
-                            <input type="radio" id="overdag" name="overdag" value="Overdag" checked/>
+                            <input type="radio" id="overdag" name="overdag" value={"Overdag"} checked
+                                   onChange={(e) => setRadioButton(e.target.value)}/>
                             <label htmlFor="Overdag">Overdag</label>
-                            <input type="radio" id="Avond" name="avond" value="Avond"/>
+
+                            <input type="radio" id="Avond" name="avond" value={"'avond"} checked={false}
+                                   onChange={(e) => setRadioButton(e.target.value)}/>
                             <label htmlFor="Avond">Avond</label>
                         </div>
 
