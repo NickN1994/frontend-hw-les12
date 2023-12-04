@@ -24,6 +24,20 @@ function App() {
     const [adress, setAdress] = React.useState("");
     const [postcode, setPostcode] = React.useState("");
     const [comment, setComment] = React.useState("");
+    const [radioButton, setRadioButton] = React.useState("overdag");
+    const [agreeTerms, setAgreeTerms] = React.useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Je bestelling wordt gemaakt");
+    }
+
+    //Is mijn handleSubmit zo juist? In de console krijg ik wel deze melding. Maar moet ik deze ook krijgen in een popup?
+    // Zijn mijn radiobuttons zo juist? deze worden gereset wanneer ik bij opmerking iets ga typen
+    // en zodra ik iets getypt heb bij opmerking, dan wordt de checkbox daaronder gereset
+    // in de console krijgi k ook een foutmelding dat de <body> niet gebruikt kan worden als children,
+    // maar ik snap niet wat ik fout doe
+    // Hoor graag in de feedback wat ik eventueel fout doe en hoe het dan wel moet, thx :)
 
     return (
         <body className="outer-box">
@@ -60,13 +74,13 @@ function App() {
             />
 
             <Button
-                type={"button"}
+                type={"reset"}
                 onClick={() => aardbeiSetCounter(aardbeiCounter - aardbeiCounter) || banenenSetCounter(banenenCounter - banenenCounter) || appelSetCounter(appelCounter - appelCounter) || kiwiSetCounter(kiwiCounter - kiwiCounter)}
                 text={"Reset"}
             />
 
             <div className="box-form">
-                <form onSubmit="Submit">
+                <form onSubmit={handleSubmit}>
                     <fieldset>
 
                         <FormField
@@ -137,31 +151,44 @@ function App() {
                             <option value="Vrijdag">Vrijdag</option>
                         </Dropdown>
 
-                        <div>
+
+                        <section>
                             <p>Bezorgmoment:</p>
-                            <input type="radio" id="overdag" name="overdag" value={"Overdag"} checked
+                            <input type="radio" id="overdag" name="bezorgmoment" value={radioButton === "overdag"} checked
+                                   onChange={event => setRadioButton("overdag")}
                             />
                             <label htmlFor="Overdag">Overdag</label>
 
-                            <input type="radio" id="Avond" name="avond" value={"'avond"}/>
+                            <input type="radio" id="Avond" name="bezorgmoment" value="avond"
+                                   onChange={event => setRadioButton("avond")}/>
                             <label htmlFor="Avond">Avond</label>
-                        </div>
+                        </section>
 
-                        <div>
+                        <section>
                             <p>Opmerking</p>
                             <textarea
                                 id="opmerking"
-                                name="opmerking"
+                                name="bezorgmoment"
                                 rows="4"
                                 cols="40"
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                             />
+                        </section>
 
-                        </div>
+                        <section>
+                            <input
+                                type="checkbox"
+                                name="agree"
+                                id="agree-terms"
+                                value={agreeTerms}
+                                onChange={(e) => setComment(e.target.value)}
+                            />
+                            <label>Ik ga akkoord met de algemene voorwaarden</label>
+                        </section>
 
                         <Button
-                            type={"button"}
+                            type={"submit"}
                             text={"Versturen"}
                         />
 

@@ -1,6 +1,6 @@
 function Dropdown(props) {
     return (
-    <div>
+    <section>
         <p>{props.name}</p>
         <select
             name={props.name}
@@ -9,7 +9,7 @@ function Dropdown(props) {
             {props.children}
 
         </select>
-    </div>
+    </section>
     )
 }
 

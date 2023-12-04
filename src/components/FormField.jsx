@@ -2,7 +2,7 @@ import React from "react";
 
 function FormField (props) {
     return (
-        <div>
+        <section>
             <p>{props.title}</p>
             <input
                 type={props.type}
@@ -11,7 +11,7 @@ function FormField (props) {
                 value={props.value}
                 onChange={props.onChange}
             />
-        </div>
+        </section>
         )
 
 }
